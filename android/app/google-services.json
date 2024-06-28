@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "203210975455",
+    "project_id": "persist-wallet-app",
+    "storage_bucket": "persist-wallet-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203210975455:android:76bfadd8d240491bc6e16a",
+        "android_client_info": {
+          "package_name": "com.example.persist_wallet_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTbyVtmQePahJwaLNuD1xLcKGHFehd0OI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
