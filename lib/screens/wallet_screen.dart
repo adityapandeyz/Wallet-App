@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:persist_wallet_app/provider/user_provider.dart';
 import 'package:persist_wallet_app/provider/wallet_provider.dart';
+import 'package:persist_wallet_app/screens/airdrop_screen.dart';
 import 'package:persist_wallet_app/screens/send_screen.dart';
 import 'package:persist_wallet_app/widgets/custom_button_2.dart';
 import 'package:provider/provider.dart';
@@ -89,8 +90,14 @@ class _WalletScreenState extends State<WalletScreen> {
                       ),
                       Expanded(
                         child: CustomBotton2(
-                          ontap: () {},
-                          hintText: 'Swap',
+                          ontap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) => const AirdropScreen(),
+                              ),
+                            );
+                          },
+                          hintText: 'Airdrop',
                           isColorRed: false,
                         ),
                       ),

@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:persist_wallet_app/provider/google_signin_provider.dart';
 import 'package:persist_wallet_app/provider/user_provider.dart';
 import 'package:persist_wallet_app/screens/home_screen.dart';
+import 'package:persist_wallet_app/screens/wallet_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'firebase_options.dart';
@@ -103,7 +104,7 @@ class MyApp extends StatelessWidget {
 
 /// The next screen widget.
 class NextScreen extends StatelessWidget {
-  const NextScreen({Key? key}) : super(key: key);
+  const NextScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

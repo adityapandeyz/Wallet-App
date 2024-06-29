@@ -67,53 +67,56 @@ class _PinInputScreenState extends State<PinInputScreen> {
       ),
       body: Form(
         key: _pinFormKey,
-        child: Column(
-          children: [
-            CustomTextField(
-              isTitleRequired: true,
-              titleText: 'Pincode',
-              obscureText: true,
-              controller: pincodeController,
-              hintText: 'Eg. 6-digit numeric pin',
-              textInputAction: TextInputAction.done,
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            CustomButton(
-              ontap: () async {
-                if (int.tryParse(pincodeController.text) == null) {
-                  showSnackBar(context, 'Pincode must be of type number.');
-                  return;
-                }
-                if (_pinFormKey.currentState!.validate()) {
-                  var jsonResponse = await WalletServices.transferBalance(
-                    context,
-                    userProvider: widget.userProvider,
-                    recipientAddress: widget.recipientAddress,
-                    sendersAddress: widget.sendersAddress,
-                    amount: widget.amount,
-                    pincode: int.parse(
-                      pincodeController.text.trim(),
-                    ),
-                  );
-
-                  if (jsonResponse['status'] == 'success') {
-                    Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(
-                        builder: (_) => TransactionCompleteScreen(
-                          transactionId: jsonResponse['transactionId'],
-                          message: jsonResponse['message'],
-                        ),
-                      ),
-                      (route) => false,
-                    );
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 26.0, vertical: 8),
+          child: Column(
+            children: [
+              CustomTextField(
+                isTitleRequired: true,
+                titleText: 'Pincode',
+                obscureText: true,
+                controller: pincodeController,
+                hintText: 'Eg. 6-digit numeric pin',
+                textInputAction: TextInputAction.done,
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              CustomButton(
+                ontap: () async {
+                  if (int.tryParse(pincodeController.text) == null) {
+                    showSnackBar(context, 'Pincode must be of type number.');
+                    return;
                   }
-                }
-              },
-              hintText: 'Continue',
-            ),
-          ],
+                  if (_pinFormKey.currentState!.validate()) {
+                    var jsonResponse = await WalletServices.transferBalance(
+                      context,
+                      userProvider: widget.userProvider,
+                      recipientAddress: widget.recipientAddress,
+                      sendersAddress: widget.sendersAddress,
+                      amount: widget.amount,
+                      pincode: int.parse(
+                        pincodeController.text.trim(),
+                      ),
+                    );
+
+                    if (jsonResponse['status'] == 'success') {
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (_) => TransactionCompleteScreen(
+                            transactionId: jsonResponse['transactionId'],
+                            message: jsonResponse['message'],
+                          ),
+                        ),
+                        (route) => false,
+                      );
+                    }
+                  }
+                },
+                hintText: 'Continue',
+              ),
+            ],
+          ),
         ),
       ),
     );

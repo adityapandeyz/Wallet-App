@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:persist_wallet_app/screens/create_wallet_screen.dart';
 
 import '../widgets/custom_button.dart';
+import 'wallet_screen.dart';
 
 /// A screen that displays the home screen of the wallet app.
 class HomeScreen extends StatelessWidget {
@@ -40,6 +41,19 @@ class HomeScreen extends StatelessWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const CreateWalletScreen(),
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                CustomButton(
+                  hintText: 'Already have a Wallet?',
+                  ontap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const WalletScreen(),
                       ),
                     );
                   },
